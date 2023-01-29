@@ -28,6 +28,7 @@
         "indent": ["error", 2],
         "max-len": ["error", {"code": 120}],
         "require-jsdoc": "off",
-        "valid-jsdoc": "off"
+        "valid-jsdoc": "off",
+        "object-curly-spacing": ["error", "always"]
     }
 }

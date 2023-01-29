@@ -1,11 +1,13 @@
-import {useEffect, useState} from 'react';
-import {invoke} from '@tauri-apps/api/tauri';
+import { useEffect, useState } from 'react';
+import { invoke } from '@tauri-apps/api/tauri';
+import MarkdownEditor from '../components/MarkdownEditor';
+import ScrapboxEditor from '../components/ScrapboxEditor';
 
-function App() {
+const Index = () => {
   const [outputScrapbox, setOutputScrapbox] = useState('');
   const [inputMarkdown, setInputMarkdown] = useState('');
   const compile2sb = async (md: string) => {
-    const sb = await invoke('compile_md2scrap', {md});
+    const sb = await invoke('compile_md2scrap', { md });
     return sb;
   };
 
@@ -23,23 +25,20 @@ function App() {
   }, [outputScrapbox]);
 
   return (
-    <div className="container h-screen w-full">
-      <div className="flex bg-red-500">
-        <div className="w-1/2">
-          <textarea
-            id="md-input"
-            className="w-full h-full bg-blue-500"
-            onChange={(e) => {
-              setInputMarkdown(e.target.value);
-            }}
-          />
+    <div className="container h-screen w-screen m-2">
+      <div className='flex h-full w-full'>
+        <div className='w-1/2 mr-2'>
+          <h2 className='text-xl'>Markdown Input</h2>
+          <MarkdownEditor md={''} onChange={(md) => setInputMarkdown(md)} />
         </div>
-        <div className="w-1/2">
-          <textarea id="sb-output" readOnly className="w-full h-full bg-red-200"/>
+
+        <div className='w-1/2 ml-2'>
+          <h2 className='text-xl'>Scrapbox Output</h2>
+          <ScrapboxEditor sb={outputScrapbox} />
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default Index;

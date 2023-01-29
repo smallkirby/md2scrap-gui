@@ -1,7 +1,11 @@
-import type {AppProps} from 'next/app';
+import type { AppProps } from 'next/app';
 
 import '../App.css';
 
-export default function MyApp({Component, pageProps}: AppProps) {
-  return <Component {...pageProps} />;
-}
+const Md2Scrap = ({ Component, pageProps }: AppProps) => {
+  return <Component
+    {...pageProps}
+  />;
+};
+
+export default Md2Scrap;
