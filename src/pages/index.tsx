@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { invoke } from "@tauri-apps/api/tauri";
+import {useEffect, useState} from 'react';
+import {invoke} from '@tauri-apps/api/tauri';
 
 function App() {
-  const [outputScrapbox, setOutputScrapbox] = useState("");
-  const [inputMarkdown, setInputMarkdown] = useState("");
+  const [outputScrapbox, setOutputScrapbox] = useState('');
+  const [inputMarkdown, setInputMarkdown] = useState('');
   const compile2sb = async (md: string) => {
-    const sb = await invoke("compileMd2Scrap", { md });
+    const sb = await invoke('compile_md2scrap', {md});
     return sb;
   };
 
@@ -16,7 +16,7 @@ function App() {
   }, [inputMarkdown]);
 
   useEffect(() => {
-    const output = document.getElementById("sb-output") as HTMLTextAreaElement;
+    const output = document.getElementById('sb-output') as HTMLTextAreaElement;
     if (output) {
       output.value = outputScrapbox;
     }
@@ -29,7 +29,9 @@ function App() {
           <textarea
             id="md-input"
             className="w-full h-full bg-blue-500"
-            onChange={(e) => {setInputMarkdown(e.target.value)}}
+            onChange={(e) => {
+              setInputMarkdown(e.target.value);
+            }}
           />
         </div>
         <div className="w-1/2">

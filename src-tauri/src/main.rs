@@ -3,11 +3,11 @@
   windows_subsystem = "windows"
 )]
 
-use pulldown_cmark::Parser;
 use md2scrap::scrapbox as sb;
+use pulldown_cmark::Parser;
 
 #[tauri::command]
-fn compileMd2Scrap(md: &str) -> String {
+fn compile_md2scrap(md: &str) -> String {
   let option = sb::option::ScrapboxOption::default();
   let parser = Parser::new(md);
   let mut output = String::new();
@@ -18,7 +18,7 @@ fn compileMd2Scrap(md: &str) -> String {
 
 fn main() {
   tauri::Builder::default()
-    .invoke_handler(tauri::generate_handler![compileMd2Scrap])
+    .invoke_handler(tauri::generate_handler![compile_md2scrap])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
