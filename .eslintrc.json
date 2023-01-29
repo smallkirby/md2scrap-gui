@@ -4,7 +4,8 @@
         "es2021": true
     },
     "extends": [
-        "google"
+        "google",
+        "plugin:@next/next/recommended"
     ],
     "overrides": [
     ],
@@ -18,7 +19,9 @@
         "node_modules/*",
         "next.config.js",
         "postcss.config.js",
-        "tailwind.config.js"
+        "tailwind.config.js",
+        "dist/*",
+        "next-env.d.ts"
     ],
     "rules": {
         "indent": ["error", 2],
